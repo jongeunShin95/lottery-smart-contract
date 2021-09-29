@@ -21,12 +21,10 @@ contract Lottery {
 
     uint256 private _pot;
 
+    event BET(uint256 index, address bettor, uint256 amount, bytes32 challenges, uint256 answerBlockNumber);
+
     constructor() public {
         owner = msg.sender;
-    }
-
-    function getSomeValue() public pure returns (uint256 value) {
-        return 5;
     }
     
     function getPot() public view returns (uint256 pot) {
@@ -34,7 +32,24 @@ contract Lottery {
     }
 
     // Bet
-        // save the bet to the queue
+    /**
+     * @dev 베팅을 한다. 유저는 0.005 ETH를 보내야 하고, 베팅을 1 byte 글자를 보낸다.
+     * 큐에 저장된 베팅 정보는 이후 distribute 함수에서 해결된다.
+     * @param challenges 유저가 베팅하는 글자
+     * @return 함수가 잘 수행되었는지 확인하는 bool 값
+    */
+    function bet(bytes32 challenges) public payable returns (bool result) {
+        // check the proper ether is sent
+        require(msg.value == BET_AMOUNT, "Not enough ETH");
+
+        // push bet to the queue
+        require(pushBet(challenges), "Fail to add a new Bet Info");
+
+        // emit event
+        emit BET(_tail - 1, msg.sender, msg.value, challenges, block.number + BET_BLOCK_INTERVAL);
+
+        return true;
+    }
     
     // Distribute
         // check the answer
@@ -46,7 +61,7 @@ contract Lottery {
         challenges = b.challenges;
     }
 
-    function pushBet(bytes32 challenges) public returns (bool) {
+    function pushBet(bytes32 challenges) internal returns (bool) {
         BetInfo memory b;
         b.bettor = msg.sender;
         b.answerBlockNumber = block.number + BET_BLOCK_INTERVAL;
@@ -58,7 +73,7 @@ contract Lottery {
         return true;
     }
 
-    function popBet(uint256 index) public returns (bool) {
+    function popBet(uint256 index) internal returns (bool) {
         delete _bets[index];
         return true;
     }
