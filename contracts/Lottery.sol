@@ -6,7 +6,7 @@ contract Lottery {
     struct BetInfo {
         uint256 answerBlockNumber;
         address bettor;
-        bytes32 challenges;
+        bytes1 challenges;
     }
 
     uint256 private _tail;
@@ -21,7 +21,7 @@ contract Lottery {
 
     uint256 private _pot;
 
-    event BET(uint256 index, address bettor, uint256 amount, bytes32 challenges, uint256 answerBlockNumber);
+    event BET(uint256 index, address bettor, uint256 amount, bytes1 challenges, uint256 answerBlockNumber);
 
     constructor() public {
         owner = msg.sender;
@@ -38,7 +38,7 @@ contract Lottery {
      * @param challenges 유저가 베팅하는 글자
      * @return 함수가 잘 수행되었는지 확인하는 bool 값
     */
-    function bet(bytes32 challenges) public payable returns (bool result) {
+    function bet(bytes1 challenges) public payable returns (bool result) {
         // check the proper ether is sent
         require(msg.value == BET_AMOUNT, "Not enough ETH");
 
@@ -54,14 +54,14 @@ contract Lottery {
     // Distribute
         // check the answer
 
-    function getBetInto(uint256 index) public view returns (uint256 answerBlockNumber, address bettor, bytes32 challenges) {
+    function getBetInfo(uint256 index) public view returns (uint256 answerBlockNumber, address bettor, bytes1 challenges) {
         BetInfo memory b = _bets[index];
         answerBlockNumber = b.answerBlockNumber;
         bettor = b.bettor;
         challenges = b.challenges;
     }
 
-    function pushBet(bytes32 challenges) internal returns (bool) {
+    function pushBet(bytes1 challenges) internal returns (bool) {
         BetInfo memory b;
         b.bettor = msg.sender;
         b.answerBlockNumber = block.number + BET_BLOCK_INTERVAL;
