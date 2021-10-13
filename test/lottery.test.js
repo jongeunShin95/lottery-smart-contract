@@ -1,4 +1,5 @@
 const Lottery = artifacts.require('Lottery');
+const { assert } = require('chai');
 const assertRevert = require('./assertRevert');
 const expectEvent = require('./expectEvent');
 
@@ -16,7 +17,7 @@ contract('Lottery', function([deployer, user1, user2]) {
         assert.equal(pot, 0);
     });
 
-    describe.only('Bet', function() {
+    describe('Bet', function() {
         it('should fail when the bet money is not 0.005 ETH', async () => {
             // Fail transaction
             await assertRevert(lottery.bet('0xab', { from: user1, value: 4000000000000000 }));
@@ -46,6 +47,27 @@ contract('Lottery', function([deployer, user1, user2]) {
 
             // check log
             await expectEvent.inLogs(receipt.logs, 'BET');
+        });
+    });
+
+    describe.only('isMatch', function() {
+        let blockHash = '0x4b23ca833f8dba9f306469acd2bf2a530b8d0c0fb9e570ebabe01775efe9163b';
+        it('should be BettingResult.Win when two characters match', async () => {
+            let matchingResult = await lottery.isMatch('0x4b', blockHash);
+            assert.equal(matchingResult, 1);
+        });
+
+        it('should be BettingResult.Fail when two characters match', async () => {
+            let matchingResult = await lottery.isMatch('0x12', blockHash);
+            assert.equal(matchingResult, 0);
+        });
+
+        it('should be BettingResult.Draw when two characters match', async () => {
+            let matchingResult = await lottery.isMatch('0x4a', blockHash);
+            assert.equal(matchingResult, 2);
+
+            matchingResult = await lottery.isMatch('0xab', blockHash);
+            assert.equal(matchingResult, 2);
         });
     });
 });
