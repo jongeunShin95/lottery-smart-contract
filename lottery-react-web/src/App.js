@@ -13,6 +13,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.initWeb3();
+    await this.getBetEvents();
   }
 
   initWeb3 = async () => {
@@ -32,6 +33,7 @@ class App extends Component {
     }
 
     let accounts = await this.web3.eth.getAccounts();
+    console.log(accounts);
     this.account = accounts[0];
 
     this.lotteryContract = new this.web3.eth.Contract(lotteryABI, lotteryAddress);
@@ -43,10 +45,16 @@ class App extends Component {
     console.log(owner);
   }
 
+  getBetEvents = async () => {
+    const records = [];
+    let events = await this.lotteryContract.getPastEvents('BET', { fromBlock: 0, toBlock: 'latest' });
+    console.log(events);
+  }
+
   bet = async () => {
 
     // nonce
-    let nonce = await this.web3.eth.method.getTransactionCount(this.account);
+    let nonce = await this.web3.eth.getTransactionCount(this.account);
     this.lotteryContract.methods.betAndDistribute('0xcd').send({ from: this.account, value: 5000000000000000, gas: 300000, nonce: nonce });
   }
 
