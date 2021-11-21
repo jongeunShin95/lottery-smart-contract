@@ -18880,10 +18880,430 @@
       "links": {},
       "address": "0xC89C4883D9206f011cC10AeB06558845BCe8Ddfd",
       "transactionHash": "0xaed56126aeaaacc974e82a08133004cfcbc72d4638674bc3b4dd246eb63a5867"
+    },
+    "1636292404169": {
+      "events": {
+        "0x100791de9f40bf2d56ffa6dc5597d2fd0b2703ea70bc7548cd74c04f5d215ab7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "BET",
+          "type": "event"
+        },
+        "0x72ec2e949e4fad9380f9d5db3e2ed0e71cf22c51d8d66424508bdc761a3f4b0e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "answer",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "DRAW",
+          "type": "event"
+        },
+        "0x3b19d607433249d2ebc766ae82ca3848e9c064f1febb5147bc6e5b21d0adebc5": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "answer",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "FAIL",
+          "type": "event"
+        },
+        "0x59c0185881271a0f53d43e6ab9310091408f9e0ff9ae2512613de800f26b8de4": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "REFUND",
+          "type": "event"
+        },
+        "0x8219079e2d6c1192fb0ff7f78e6faaf5528ad6687e69749205d87bd4b156912b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "answer",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "WIN",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xBfaD9A9982B2169E124F754b2F8036bCEA542137",
+      "transactionHash": "0x8813657b69c73be4167f2814c23648f5565a57eeaab0c099bdd5c109209387c0"
+    },
+    "1636557026038": {
+      "events": {
+        "0x100791de9f40bf2d56ffa6dc5597d2fd0b2703ea70bc7548cd74c04f5d215ab7": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "BET",
+          "type": "event"
+        },
+        "0x72ec2e949e4fad9380f9d5db3e2ed0e71cf22c51d8d66424508bdc761a3f4b0e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "answer",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "DRAW",
+          "type": "event"
+        },
+        "0x3b19d607433249d2ebc766ae82ca3848e9c064f1febb5147bc6e5b21d0adebc5": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "answer",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "FAIL",
+          "type": "event"
+        },
+        "0x59c0185881271a0f53d43e6ab9310091408f9e0ff9ae2512613de800f26b8de4": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "REFUND",
+          "type": "event"
+        },
+        "0x8219079e2d6c1192fb0ff7f78e6faaf5528ad6687e69749205d87bd4b156912b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "bettor",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "challenges",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes1",
+              "name": "answer",
+              "type": "bytes1"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "answerBlockNumber",
+              "type": "uint256"
+            }
+          ],
+          "name": "WIN",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xC89C4883D9206f011cC10AeB06558845BCe8Ddfd",
+      "transactionHash": "0xaed56126aeaaacc974e82a08133004cfcbc72d4638674bc3b4dd246eb63a5867"
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2021-11-04T14:39:23.076Z",
+  "updatedAt": "2021-11-10T15:16:54.821Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

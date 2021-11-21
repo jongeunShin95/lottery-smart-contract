@@ -11,6 +11,26 @@ let lotteryABI = [ { "inputs": [], "payable": false, "stateMutability": "nonpaya
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      betRecords: [],
+      winRecords: [],
+      failRecords: [],
+      pot: '0',
+      challenges: ['A', 'B'],
+      finalRecords: [{
+        bettor: '0xabcd...',
+        index: '0',
+        challenges: 'ab',
+        answer: 'ab',
+        targetBlockNumber: '10',
+        pot: '0'
+      }]
+    }
+  }
+
   async componentDidMount() {
     await this.initWeb3();
     await this.getBetEvents();
@@ -58,23 +78,110 @@ class App extends Component {
     this.lotteryContract.methods.betAndDistribute('0xcd').send({ from: this.account, value: 5000000000000000, gas: 300000, nonce: nonce });
   }
 
+  // Pot money
+
+  // bet 글자 선택 UI(버튼 형식)
+
+  // Bet button
+
+  // History table
+
+  // index address challenge answer pot status answerBlockNumber
+
+  getCard = (_Character, _cardStyle) => {
+
+    let _card = '';
+
+    if(_Character === 'A') {
+      _card = '🂡';
+    }
+
+    if (_Character === 'B') {
+      _card = '🂱';
+    }
+
+    if (_Character === 'C') {
+      _card = '🃁';
+    }
+
+    if (_Character === 'D') {
+      _card = '🃑';
+    }
+
+    return (
+      <button className={_cardStyle}>
+        <div className="card-body text-center">
+          <p className="card-text"></p>
+          <p className="card-text text-center" style={{ fontSize: 300 }}>{_card}</p>
+          <p className="card-text"></p>
+        </div>
+      </button>
+    );
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+
+        {/* Header - Pot, Betting characters */}
+        <div className="container">
+          <div className="jumbotron">
+            <h1>Current Pot: {this.state.pot}</h1>
+            <p>Lottery</p>
+            <p>Lottery tutorial</p>
+            <p>Your Bet</p>
+            <p>{this.state.challenges[0]} {this.state.challenges[1]}</p>
+          </div>
+        </div>
+
+        {/* Card section */}
+        <div className="container">
+          <div className="card-group">
+            {this.getCard('A', 'card bg-primary')}
+            {this.getCard('B', 'card bg-warning')}
+            {this.getCard('C', 'card bg-danger')}
+            {this.getCard('D', 'card bg-success')}
+          </div>
+        </div>
+        <br/>
+        <div className="container">
+          <button className="btn btn-danger btn-lg">BET!</button>
+        </div>
+
+      <br/>
+      <div className="container">
+        <table className="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Address</th>
+              <th>Challenge</th>
+              <th>Answer</th>
+              <th>Pot</th>
+              <th>Status</th>
+              <th>AnswerBlockNumber</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.state.finalRecords.map((record, index) => {
+                return (
+                  <tr key={index}>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                  </tr>
+                );
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+
       </div>
     );
   }
